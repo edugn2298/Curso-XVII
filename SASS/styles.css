@@ -11,5 +11,10 @@ div {
   align-items: center;
 }
 div h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: blue;
+  color: white;
+  background-color: black;
 }/*# sourceMappingURL=styles.css.map */

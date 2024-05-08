@@ -1,19 +1,12 @@
-/*Variables
-$main-color: red
-
-/*mixins
-@mixin flex ($display, $justify, $align)
-  display: $display
-  justify-content: $justify
-  align-items: $align
-
-
+@use "./componentes/_utilidades" as *
 
 p 
   color : $main-color
 
 div
-  background-color: red
+  background-color: $main-color
   @include flex(flex,space-between,center)
   h1
+    @include flex(flex)
     color: blue
+    @include colors(green,black)
