@@ -1,11 +1,16 @@
 let opcion = ['Piedra','Papel','Tijeras'];
 
+player1 = undefined;
+player2 =undefined;
+
 function juego(){
   let finalizar = 'SI';
-  while(finalizar.toUpperCase() == "NO" ){
+  while(finalizar.toUpperCase() == "SI" ){
+    console.log('Entre');
 
-    finalizar = prompt('¿Quieres jugar otra ronda? (SI/NO)').toUpperCase();
+    finalizar = input('¿Quieres jugar otra ronda? (SI/NO)').toUpperCase();
   }
+  console.log('Salí')
 }
 
 juego();
