@@ -14,10 +14,10 @@ async function traerTiempo() {
 
 
 function mostrarDatos(data){
- document.getElementById('location').innerText = data.location.name;
- document.getElementById('weather-icon').src = `https:${data.current.condition.icon}`
- document.getElementById('temperature').innerText = data.current.temp_c;
- document.getElementById('description').innerText = data.current.condition.text;
+  document.getElementById('location').innerText = data.location.name;
+  document.getElementById('weather-icon').src = `https:${data.current.condition.icon}`
+  document.getElementById('temperature').innerText = data.current.temp_c;
+  document.getElementById('description').innerText = data.current.condition.text;
 }
 
 function autoRefresh (intervalo){
