@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookies</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
+    <h1 class="text-2xl font-bold mb-4 text-center">Ejemplo del uso de cookies</h1>
+    <div class="mb-4">
+      <label for="usernameInput" class="block text-gray-700 font-medium mb-2">Nombre de usuario:</label>
+      <input type="text" id="usernameInput" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+    </div>
+    <div class="mb-4">
+      <p id="username" class="block text-lg font-medium text-gray-700"></p>
+    </div>
+    <div class="flex justify-between">
+      <button id="saveButton" class="bg-blue-500 text-white py-2 px-4 mx-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Guardar Cookie</button>
+      <button id="loadButton" class="bg-green-500 text-white py-2 px-4 mx-4  rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">Cargar Cookie</button>
+      <button id="deleteButton" class="bg-red-500 text-white py-2 px-4 mx-4  rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Eliminar Cookie</button>
+    </div>
+  </div>
+  <script src="cookies.js"></script>
+</body>
+</html>

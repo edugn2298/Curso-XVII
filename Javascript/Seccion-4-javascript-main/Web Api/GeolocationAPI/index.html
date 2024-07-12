@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Geolocation API</title>
+</head>
+<body class="w-[100%] h-[100vh] grid gap-8 bg-gradient-to-br from-green-500 to-green-800 pl-8">
+    <h1 class="font-bold text-3xl text-center mt-8">Geolocation API</h1>
+    <p class="font-bold text-xl">Longitud:<span id="longitud"></span></p>
+    <p class="font-bold text-xl">Latitud: <span id="latitud"></span></p>
+    <p class="font-bold text-xl">Altitud: <span id="altitud"></span></p>
+    <p class="font-bold text-xl">Precisión: <span id="precision"></span></p>
+    <p class="font-bold text-xl">Velocidad: <span id="velocidad"></span></p>
+    <p class="font-bold text-xl">Dirección: <span id="direccion"></span></p>
+
+    <button id="encontrarme" class="rounded-2xl border border-1 border-black font-bold text-lg px-4 w-48 bg-cyan-600/75">Ver mi ubicacion</button><br />
+    <p id="status" class="font-bold text-lg mb-[-20px]"></p>
+    <a id="map-link" class="font-bold text-lg text-white" target="_blank"></a>
+</body>
+<script src="index.js"></script>
+</html>

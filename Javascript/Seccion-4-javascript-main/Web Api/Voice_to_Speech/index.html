@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Texto a Voz</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-400">
+        <div class="flex flex-col items-center justify-center h-screen">
+            <h1 class="text-3xl font-bold mb-4 text-white bg-gray-600 px-4 py-3 rounded-full">Texto a Voz</h1>
+            <textarea id="mensaje" class="w-1/2 h-32 p-2 border-2 border-gray-600 rounded-md mb-4" placeholder="Ingresa tu texto"></textarea>
+            <div class="flex gap-6">
+                <button id="btn-hablar" class="px-4 py-2 bg-blue-500 text-white rounded-md">Hablar</button>
+                <button id="btn-pause" class="px-4 py-2 bg-blue-500 text-white rounded-md">Pausar</button>
+                <button id="btn-resume" class="px-4 py-2 bg-blue-500 text-white rounded-md">Resumir</button>
+                <button id="btn-stop" class="px-4 py-2 bg-blue-500 text-white rounded-md">Cancelar</button>
+                <button id="voces" class="px-4 py-2 bg-blue-500 text-white rounded-md">Voces</button>
+            </div>
+        </div>
+
+    </body>
+        <script src="./index.js"></script>
+</html>

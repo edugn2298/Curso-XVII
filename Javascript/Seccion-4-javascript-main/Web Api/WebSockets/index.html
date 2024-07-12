@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://rawcdn.githack.com/Edward-Alarco/scrollbar-custom.css/master/styles/main.css?token=ANLIZ2U4IU2MNEI4DSSOYJC7USMJY">
+        <title>Chat</title>
+    </head>
+
+    <body thumb="#437B9B" track="#354046" class="flex flex-col justify-center items-center gap-12 bg-gradient-to-br from-gray-500 to-gray-800 w-[100%] h-[100vh]">
+        <div class="flex">
+            <input 
+                class="w-[200px] sm:w-[320px] lg:w-[600px] min-h-[70px] text-sm lg:text-lg px-4 rounded-l-xl bg-gray-200 focus:outline-none focus:ring-2 focus:ring-sky-700 focus:ring-opacity-50"
+                type="text" 
+                id="messageInput" 
+                placeholder="Escribe tu mensaje..."
+            >
+            <button 
+                class="bg-sky-700 text-white font-bold px-4 py-2 rounded-r-xl hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-700 focus:ring-opacity-50" 
+                id="enviar">
+                    Enviar
+            </button>
+        </div>
+        
+        <ul 
+            class="w-10 radius degraded w-[280px] sm:w-[400px] lg:w-[680px] min-h-[300px] max-h-[350px] overflow-y-auto overflow-x-hidden pl-5 pt-3 bg-gray-300 rounded-xl" 
+            id="chat"
+        >
+            <!-- Aqui se mostraran los mensajes -->
+        </ul>
+
+        <button
+            class="bg-pink-700 text-white font-bold px-4 py-2 rounded-xl hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-700 focus:ring-opacity-50"
+            id="desconectar"
+            >
+                Desconectar
+        </button>
+        
+        <button
+            class="bg-green-700 text-white font-bold px-4 py-2 rounded-xl hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50 hidden"
+            id="conectar"
+            >
+                conectar
+        </button>
+    </body>
+
+    <!-- Conexión al Cliente -->
+    <script src="Cliente.js"></script>
+
+    <script src="https://rawcdn.githack.com/Edward-Alarco/scrollbar-custom.css/master/js/scrollbar.js?token=ANLIZ2SI36GSAG7AGWSJOI27USNGA"></script>
+</html>
