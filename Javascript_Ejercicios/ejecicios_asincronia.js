@@ -24,16 +24,7 @@ function obtenerDatos(src, resuelto,error){
   }
 }
 
-obtenerDatos('/src/texto.txt', resuelto, error);
-
-
-
-
-
-
-
-
-
+obtenerDatos('/src/texto.txt', () => console.log('resuelto'), () => console.log('error'));
 
 /*
 Ejercicio 2 
@@ -55,3 +46,41 @@ Se puede utilizar el operador parseInt para convertir cada dígito de la cadena 
 Se puede utilizar el operador += para acumular el resultado de la suma.
 
 Se puede utilizar resolve para resolver la promesa con el resultado del cálculo.*/
+
+function calcularSumaDigitos(numero) {
+  return new Promise((resolve, reject) => {
+    // Simulamos el tiempo de la tarea (por ejemplo, 1 segundo)
+    setTimeout(() => {
+      try {
+        // Convertimos el número a una cadena
+        const numeroComoCadena = String(numero);
+
+        // Inicializamos la suma
+        let suma = 0;
+
+        // Iteramos sobre los dígitos de la cadena
+        for (const digito of numeroComoCadena) {
+          // Convertimos cada dígito a un número entero y lo sumamos
+          suma += parseInt(digito, 10);
+        }
+
+        // Resolvemos la promesa con el resultado
+        resolve(suma);
+      } catch (error) {
+        // Si ocurre un error, rechazamos la promesa
+        reject(new Error("Error al calcular la suma de los dígitos: " + error.message));
+      }
+    }, 1000); // Simulamos 1 segundo de tiempo de cálculo
+  });
+}
+
+// Ejemplo de uso:
+calcularSumaDigitos(12345)
+  .then((resultado) => {
+    console.log("Suma de los dígitos:", resultado);
+  })
+  .catch((error) => {
+    console.error("Error:", error.message);
+  });
+
+  
