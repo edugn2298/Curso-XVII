@@ -1,10 +1,10 @@
 import ProtoTipes from "prop-types";
 
-Lista.propTypes = {
+List.propTypes = {
   items: ProtoTipes.arrayOf(ProtoTipes.string).isRequired
 };
 
-export default function Lista({ items}) {
+export default function List({ items}) {
   return (
     <ul className="list-disc list-inside">
       {items.map((item, index) => {
