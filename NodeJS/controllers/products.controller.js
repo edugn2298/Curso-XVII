@@ -1,4 +1,4 @@
-import { Product } from "../models/product.model";
+import { Product } from "../models/products.model.js";
 
 /**
  * Get all products
@@ -21,10 +21,9 @@ export const getProducts = async (req, res) => {
     );
     res.status(200).json(products);
   } catch (error) {
-    if (error.name === "ValidationError") {
-      res.status(400).json({ error: error.message });
-    } else {
-      res.status(500).json({ error: "Internal server error" });
+    console.error(error);
+    if (!res.headersSent) {
+      return res.status(500).json({ error: "Internal server error" });
     }
   }
 };
@@ -67,7 +66,7 @@ export const getProductById = async (req, res) => {
  * @query {Number} limit - Limit of products
  * @returns {Object} - List of products
  * @method GET
- * @example http://localhost:3000/products/search?search=product&page=1&limit=10
+ * @example http://localhost:3000/search?search=product&page=1&limit=10
  */
 
 export const searchProduct = async (req, res) => {

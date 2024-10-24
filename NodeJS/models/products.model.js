@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
+
 /**
- * Schema for products
- *@typedef {Object} productSchema
- *@property {string} name - The name of the product
- *@property {string} description - The description of the product
- *@property {number} price - The price of the product
- *@property {number} stock - The stock of the product
- *@property {string} image - The image of the product
- *@property {boolean} free_shipping - The free shipping of the product
- *@property {Date} createdAt - The date of creation of the product
- *@property {Date} updatedAt - The date of update of the product
+ *  Schema for products
+ *  @typedef {Object} productSchema
+ *  @property {String} name - Name of the product, must be unique, required
+ *  @property {String} description - Description of the product
+ *  @property {Number} price - Price of the product
+ *  @property {Number} stock - Stock of the product
+ *  @property {String} image - Image of the product
+ *  @property {Boolean} free_shipping - Free shipping of the product
+ *  @property {Date} createdAt - Date of creation
+ *  @property {Date} updatedAt - Date of update
  */
 
-// Definir un schema
 const productSchema = new mongoose.Schema(
   {
     name: {
@@ -27,14 +27,21 @@ const productSchema = new mongoose.Schema(
     stock: { type: Number, required: true, min: 0 },
     image: { type: String },
     free_shipping: { type: Boolean, default: false },
+    deleted: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
+
+/**
+ * Plugin for pagination
+ */
 productSchema.plugin(mongoosePaginate);
+
 /**
  * Model for products
- * @typeof {Object} Product
+ * @typedef {Object} Product
  */
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("Products", productSchema);
+
 export { Product };
