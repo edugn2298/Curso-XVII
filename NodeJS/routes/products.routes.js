@@ -7,6 +7,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controllers/products.controller.js";
+import { upload } from "../Middlewares/uploadImage.js";
 
 /**
  * Products routes
@@ -36,7 +37,7 @@ routerProducts.get("/search", searchProduct);
  * Create a product
  * @method POST
  */
-routerProducts.post("/products", createProduct);
+routerProducts.post("/products", upload.single("image"), createProduct);
 
 /**
  * Update a product
