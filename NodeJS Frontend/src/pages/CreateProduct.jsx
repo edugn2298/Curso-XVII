@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import Form from "../components/general/Form";
+import { Link } from "react-router-dom";
 
 function CreateProduct() {
   const [data, setData] = useState({
@@ -35,45 +37,6 @@ function CreateProduct() {
       "bg-blue-700 px-4 py-1 rounded-[15px] hover:bg-white hover:text-blue-700 transition-all duration-500",
     button_create:
       "bg-white text-blue-700 px-4 py-1 rounded-[15px] hover:bg-blue-400 hover:text-white transition-all duration-500",
-  };
-
-  const handleChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: {
-        ...prevData[name],
-        value:
-          type === "file" ? files[0] : type === "checkbox" ? checked : value,
-        error: "",
-      },
-    }));
-  };
-
-  const createProduct = async (e) => {
-    e.preventDefault();
-    if (validate()) {
-      const formData = new FormData();
-      formData.append("image", data.image.value);
-      formData.append("name", data.name.value);
-      formData.append("price", data.price.value);
-      formData.append("stock", data.stock.value);
-      formData.append("description", data.description.value);
-      formData.append(
-        "free_shipping",
-        data.free_shipping.value ? "true" : "false"
-      );
-      try {
-        await axios.post("http://localhost:3003/products", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        alert("Product created");
-      } catch (error) {
-        alert(`An error occurred: ${error.message}`);
-      }
-    }
   };
 
   const validate = () => {
@@ -165,98 +128,41 @@ function CreateProduct() {
     return isValid;
   };
 
+  const createProduct = async (e) => {
+    e.preventDefault();
+    if (validate()) {
+      const formData = new FormData();
+      formData.append("image", data.image.value);
+      formData.append("name", data.name.value);
+      formData.append("price", data.price.value);
+      formData.append("stock", data.stock.value);
+      formData.append("description", data.description.value);
+      formData.append(
+        "free_shipping",
+        data.free_shipping.value ? "true" : "false"
+      );
+      try {
+        await axios.post("http://localhost:3001/products", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        alert("Product created");
+      } catch (error) {
+        alert(`An error occurred: ${error.message}`);
+      }
+    }
+  };
+
   return (
     <div className={styles.body}>
       <div className="flex justify-end">
-        <button className={styles.button_back}>Back</button>
+        <Link to="/">
+          <button className={styles.button_back}>Back</button>
+        </Link>
       </div>
       <h1 className="text-center text-3xl font-semibold">Create product</h1>
-      <form
-        method="POST"
-        className="py-8 px-4 flex flex-col gap-8 items-center bg-blue-700 rounded-[15px]"
-        onSubmit={createProduct}
-      >
-        <div className="flex flex-col gap-4 w-[80%]">
-          <label htmlFor="image">Image</label>
-          <input
-            className="text-gray-800"
-            type="file"
-            id="image"
-            name="image"
-            onChange={handleChange}
-          />
-          {data.image.error && (
-            <span className="text-red-500">{data.image.error}</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-4 w-[80%]">
-          <label htmlFor="name">Name</label>
-          <input
-            className="text-gray-800"
-            type="text"
-            id="name"
-            name="name"
-            value={data.name.value}
-            onChange={handleChange}
-          />
-          {data.name.error && (
-            <span className="text-red-500">{data.name.error}</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-4 w-[80%]">
-          <label htmlFor="price">Price</label>
-          <input
-            className="text-gray-800"
-            type="text"
-            id="price"
-            name="price"
-            value={data.price.value}
-            onChange={handleChange}
-          />
-          {data.price.error && (
-            <span className="text-red-500">{data.price.error}</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-4 w-[80%]">
-          <label htmlFor="stock">Stock</label>
-          <input
-            className="text-gray-800"
-            type="text"
-            id="stock"
-            name="stock"
-            value={data.stock.value}
-            onChange={handleChange}
-          />
-          {data.stock.error && (
-            <span className="text-red-500">{data.stock.error}</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-4 w-[80%]">
-          <label htmlFor="description">Description</label>
-          <textarea
-            className="text-gray-800"
-            id="description"
-            name="description"
-            value={data.description.value}
-            onChange={handleChange}
-          />
-          {data.description.error && (
-            <span className="text-red-500">{data.description.error}</span>
-          )}
-        </div>
-        <div className="flex flex-col items-start gap-4 w-[80%]">
-          <label htmlFor="free_shipping">Free shipping</label>
-          <input
-            className="text-gray-800"
-            type="checkbox"
-            id="free_shipping"
-            name="free_shipping"
-            checked={data.free_shipping.value}
-            onChange={handleChange}
-          />
-        </div>
-        <button className={styles.button_create}>Create</button>
-      </form>
+      <Form data={data} setData={setData} event={createProduct} text="Create" />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 /**
  * @description Page for viewing products
  * @returns { Component }
@@ -43,6 +44,16 @@ function ViewProducts() {
     return <div className={styles.body_loading}>Loading...</div>;
   }
 
+  const deleteProduct = (id) => {
+    if (!window.confirm("Are you sure you want to delete this product?"))
+      return;
+    axios.delete(`http://localhost:3001/products/${id}`).then(() => {
+      axios.get("http://localhost:3001/products").then((response) => {
+        setData(response.data);
+      });
+    });
+  };
+
   /**
    * Return the page
    */
@@ -50,7 +61,9 @@ function ViewProducts() {
     <div className={styles.body}>
       <div className={styles.div_top}>
         <h1 className="font-bold text-4xl">Products</h1>
-        <button className={styles.button_create}>Create</button>
+        <Link to="/create-product">
+          <button className={styles.button_create}>Create</button>
+        </Link>
       </div>
       <ul className={styles.grid_products}>
         {data &&
@@ -67,6 +80,20 @@ function ViewProducts() {
               />
               <h2 className="font-semibold text-2xl">{product.name}</h2>
               <p>{product.description}</p>
+              <div className="flex w-full justify-end gap-4">
+                <Link to={`/edit-product/${product._id}`}>
+                  <button className="text-orange-600 bg-white rounded-[15px] px-2 py-1">
+                    Editar
+                  </button>
+                </Link>
+
+                <button
+                  onClick={() => deleteProduct(product._id)}
+                  className="text-red-600 bg-white rounded-[15px] px-2 py-1"
+                >
+                  Borrar
+                </button>
+              </div>
             </li>
           ))}
       </ul>

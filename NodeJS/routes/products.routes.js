@@ -43,7 +43,7 @@ routerProducts.post("/products", upload.single("image"), createProduct);
  * Update a product
  * @method PATCH
  */
-routerProducts.patch("/products/:id", updateProduct);
+routerProducts.patch("/products/:id", upload.single("image"), updateProduct);
 
 /**
  * Delete a product
